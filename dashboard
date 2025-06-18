@@ -1,0 +1,21 @@
+<?php session_start();
+if (!isset($_SESSION['user_id'])) { header("Location: login.php"); exit(); }
+?>
+<!DOCTYPE html>
+<html>
+<head><title>User Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+<h2>Welcome to FindIt</h2>
+<ul>
+    <li><a href="report_lost.php">Report Lost Item</a></li>
+    <li><a href="report_found.php">Report Found Item</a></li>
+    <li><a href="index.php">Search Items</a></li>
+    <?php if ($_SESSION['role'] == 'admin') echo "<li><a href='admin.php'>Admin Panel</a></li>"; ?>
+    <li><a href="logout.php">Logout</a></li>
+</ul>
+</div>
+</body>
+</html>
